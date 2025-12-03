@@ -1,12 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Navbar = () => {
+const Navbar = ({ onMenuToggle }) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+    if (onMenuToggle) {
+      onMenuToggle(!isMobileMenuOpen)
+    }
+  }
+
   return (
     <nav className="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50 h-16">
       <div className="px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex justify-between items-center h-full">
-          {/* Left side: Logo and Text */}
+          {/* Left side: Logo, Hamburger, and Text */}
           <div className="flex items-center">
+            {/* Hamburger Menu Button for Mobile */}
+            <button 
+              onClick={toggleMobileMenu}
+              className="md:hidden mr-3 p-2 rounded-md text-gray-600 hover:bg-gray-100"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+              )}
+            </button>
+            
             {/* Logo icon */}
             <div className="mr-3 flex items-center justify-center">
               <svg 
@@ -40,7 +66,7 @@ const Navbar = () => {
                 <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center border-2 border-blue-300">
                   {/* User icon SVG */}
                   <svg 
-                    className="w-5 h-5 text-blue-600" 
+                    className="w-5 h-5 text-grblueeen-600" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24" 
@@ -55,7 +81,7 @@ const Navbar = () => {
                   </svg>
                 </div>
                 {/* Green status indicator */}
-                <div className="absolute -bottom-1 -right-1 h-4 w-4 bg-blue-600 rounded-full border-2 border-white"></div>
+                <div className="absolute -bottom-1 -right-1 h-4 w-4 bg-blue-500 rounded-full border-2 border-white"></div>
               </div>
             </div>
           </div>
