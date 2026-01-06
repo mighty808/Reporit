@@ -14,7 +14,7 @@ const AnalyticsPage = () => {
     <>
       <Navbar onMenuToggle={handleMenuToggle} />
       <Sidebar isMobileMenuOpen={isMobileMenuOpen}>
-        <CheckForm />
+        
       </Sidebar>
     </>
   )
