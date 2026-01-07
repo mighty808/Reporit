@@ -1,8 +1,8 @@
-import moongoose from "moongoose";
+import mongoose from "mongoose";
 
 const connectDb = async (DATABASE_URL) => {
   try {
-    await moongoose.connect(DATABASE_URL);
+    await mongoose.connect(DATABASE_URL);
     console.log("Database is connected...");
   } catch (error) {
     console.log(error);

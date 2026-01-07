@@ -19,3 +19,6 @@ const transactionSchema = new mongoose.Schema({
   }
 })
 
+// Creating Models / Collections
+const TransactionModel = mongoose.model("Transaction", transactionSchema);
+
