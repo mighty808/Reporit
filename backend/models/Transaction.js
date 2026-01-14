@@ -21,7 +21,6 @@ const TransactionModel = mongoose.model("Transaction", transactionSchema);
 };
 */
 
-/*
 const insertOne = async () => {
   const doc = new TransactionModel({
     transactionId: "53479513587",
@@ -33,6 +32,5 @@ const insertOne = async () => {
   const result = await doc.save();
   console.log("Inserted:", result);
 };
-*/
 
-// export { allDocs };
+export { insertOne };
