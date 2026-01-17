@@ -9,12 +9,11 @@ export async function CheckTransactionController(req, res) {
     const errors = [];
     if (!senderPhone) errors.push("senderPhone is required");
     if (!recipientPhone) errors.push("recipientPhone is required");
-    if (
-      amount === undefined ||
-      amount === null ||
-      Number.isNaN(Number(amount))
-    ) {
+    const amtNum = Number(amount);
+    if (amount === undefined || amount === null || Number.isNaN(amtNum)) {
       errors.push("amount must be a number");
+    } else if (amtNum <= 0) {
+      errors.push("amount must be greater than 0");
     }
     if (!transactionType) errors.push("transactionType is required");
     if (errors.length) {
@@ -24,7 +23,8 @@ export async function CheckTransactionController(req, res) {
     const Transaction = mongoose.model("Transaction");
 
     const normalizedRecipient = String(recipientPhone).trim();
-    const amt = Number(amount);
+    const normalizedSender = String(senderPhone).trim();
+    const amt = amtNum;
 
     const recipientCount = await Transaction.countDocuments({
       recipientPhoneNumber: normalizedRecipient,

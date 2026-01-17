@@ -1,4 +1,3 @@
-import express from "express";
 import mongoose from "mongoose";
 
 // Define Schema
@@ -7,27 +6,13 @@ const transactionSchema = new mongoose.Schema({
   recipientName: { type: String, required: true },
   recipientPhoneNumber: { type: String, required: true },
   amount: { type: Number, required: true },
-  
 });
 
-// Creating Models / Collections
-const TransactionModel = mongoose.model("Transaction", transactionSchema);
+// Register model (accessible via mongoose.model("Transaction"))
+mongoose.model("Transaction", transactionSchema);
 
-// Getting all
-//   const allDocs = async () => {
-//   const results = await TransactionModel.find();
-//   console.log(results);
-// };
+// Note: use mongoose.model("Transaction") where needed; no direct exports here.
 
-// const insertOne = async () => {
-//   const doc = new TransactionModel({
-//     transactionId: "53479513587",
-//     recipientName: "Mark Atta",
-//     recipientPhoneNumber: "0206874512",
-//     amount: 2200,
-//   });
-
-//   const result = await doc.save();
-//   console.log("Inserted:", result);
-// };
-
+// Example insert (for reference):
+// const Transaction = mongoose.model("Transaction");
+// await Transaction.create({ transactionId, recipientName, recipientPhoneNumber, amount });
