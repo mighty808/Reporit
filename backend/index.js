@@ -1,6 +1,7 @@
 import express from "express";
 import connectDb from "./db/connectDB.js";
 import transactionsRouter from "./routes/transactionRoutes.js";
+import reportRouter from "./routes/reportRoutes.js";
 
 const app = express();
 app.use(express.json());
@@ -12,6 +13,7 @@ connectDb(MONGODB_URI);
 
 // Mount API routes
 app.use("/api/transactions", transactionsRouter);
+app.use("/api/reports", reportRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on Port ${port}`);
