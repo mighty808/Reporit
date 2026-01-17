@@ -14,10 +14,10 @@ const transactionSchema = new mongoose.Schema({
 const TransactionModel = mongoose.model("Transaction", transactionSchema);
 
 // Getting all
-  const allDocs = async () => {
-  const results = await TransactionModel.find();
-  console.log(results);
-};
+//   const allDocs = async () => {
+//   const results = await TransactionModel.find();
+//   console.log(results);
+// };
 
 // const insertOne = async () => {
 //   const doc = new TransactionModel({
@@ -31,4 +31,3 @@ const TransactionModel = mongoose.model("Transaction", transactionSchema);
 //   console.log("Inserted:", result);
 // };
 
-export { allDocs };
