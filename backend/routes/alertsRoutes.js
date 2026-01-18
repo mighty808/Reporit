@@ -1,5 +1,8 @@
 import express from "express";
-import { RecentAlertsController, SummaryAlertsController } from "../controllers/alertsController.js";
+import {
+  RecentAlertsController,
+  SummaryAlertsController,
+} from "../controllers/alertsController.js";
 
 const alertsRouter = express.Router();
 
